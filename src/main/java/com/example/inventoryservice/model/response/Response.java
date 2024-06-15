@@ -1,6 +1,15 @@
 package com.example.inventoryservice.model.response;
 
-public class Response<T> {
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-    private 
+@Getter
+@Setter
+@AllArgsConstructor
+public class Response<T, D> {
+
+    private String status;
+    private T errors;
+    private D data;
 }
