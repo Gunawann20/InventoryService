@@ -12,5 +12,5 @@ public interface ProductService {
     Product updateQuantity(Long id, Integer quantity) throws ProductNotFoundException;
     Integer checkAvailability(Long id) throws ProductNotFoundException;
     List<Product> listProduct();
-    Product reduceQuantity(Long id, Integer quantity) throws ProductNotFoundException, InsufficientStockException;
+    Product orderProduct(Long id, Integer quantity) throws ProductNotFoundException, InsufficientStockException;
 }

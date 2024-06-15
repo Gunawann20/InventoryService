@@ -11,11 +11,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
@@ -140,7 +138,7 @@ class ProductServiceImplTest {
     }
 
     @Test
-    void testReduceQuantity_InsufficientStock() {
+    void testOrderWhenProductStockIsLessThanTheOrderQuantity() {
         Product product = new Product();
         product.setId(1L);
         product.setQuantity(3);
@@ -148,7 +146,7 @@ class ProductServiceImplTest {
         Mockito.when(productRepository.findByIdForUpdate(anyLong())).thenReturn(Optional.of(product));
 
         assertThrows(InsufficientStockException.class, () -> {
-            productService.reduceQuantity(1L, 5);
+            productService.orderProduct(1L, 5);
         });
 
         verify(productRepository, times(1)).findByIdForUpdate(1L);

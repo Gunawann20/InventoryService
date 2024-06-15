@@ -4,7 +4,7 @@ import com.example.inventoryservice.exceptions.InsufficientStockException;
 import com.example.inventoryservice.exceptions.ProductNotFoundException;
 import com.example.inventoryservice.model.Product;
 import com.example.inventoryservice.model.dtos.ProductDto;
-import com.example.inventoryservice.model.request.ReduceProductQuantityRequest;
+import com.example.inventoryservice.model.request.OrderProductRequest;
 import com.example.inventoryservice.model.request.UpdateProductRequest;
 import com.example.inventoryservice.model.response.Response;
 import com.example.inventoryservice.service.ProductService;
@@ -52,7 +52,7 @@ public class ProductController {
     }
 
     @PutMapping(
-            value = "/restore",
+            value = "/quantity",
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
     public Response<Object, Product> updateProduct(@Valid @RequestBody UpdateProductRequest request) throws ProductNotFoundException {
@@ -61,11 +61,11 @@ public class ProductController {
     }
 
     @PutMapping(
-            value = "/reduce",
+            value = "/order",
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
-    public Response<Object, Product> reduceQuantityProduct(@Valid @RequestBody ReduceProductQuantityRequest request) throws InsufficientStockException, ProductNotFoundException {
-        Product product = productService.reduceQuantity(request.getId(), request.getQuantity());
+    public Response<Object, Product> orderProduct(@Valid @RequestBody OrderProductRequest request) throws InsufficientStockException, ProductNotFoundException {
+        Product product = productService.orderProduct(request.getId(), request.getQuantity());
         return new Response<>(SUCCESS, null, product);
     }
 

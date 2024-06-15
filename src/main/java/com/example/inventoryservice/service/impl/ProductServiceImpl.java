@@ -60,7 +60,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional
-    public Product reduceQuantity(Long id, Integer quantity) throws ProductNotFoundException, InsufficientStockException {
+    public Product orderProduct(Long id, Integer quantity) throws ProductNotFoundException, InsufficientStockException {
         Optional<Product> product = productRepository.findByIdForUpdate(id);
         if (product.isPresent()){
             Product updateProduct = product.get();

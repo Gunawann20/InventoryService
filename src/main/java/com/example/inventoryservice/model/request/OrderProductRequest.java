@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
-public class ReduceProductQuantityRequest {
+public class OrderProductRequest {
 
     @NotNull(message = "Id cannot be null")
     private Long id;
