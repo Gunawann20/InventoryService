@@ -51,7 +51,7 @@ public class ProductController {
         return new Response<>(SUCCESS, null, products);
     }
 
-    @PutMapping(
+    @PostMapping(
             value = "/quantity",
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
@@ -60,7 +60,7 @@ public class ProductController {
         return new Response<>(SUCCESS, null, product);
     }
 
-    @PutMapping(
+    @PostMapping(
             value = "/order",
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
